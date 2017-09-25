@@ -1,0 +1,22 @@
+@layout('master')
+@section('content')
+<form method="post" action="{{ post._id }}">
+  {{ csrfField() }}
+  <div class="form-group">
+    <label>Post Title</label>
+    <input type="text" name="title" class="form-control" placeholder="Title" value="{{ post.title}}">
+    {{ elIf('<span>$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
+
+  </div>
+
+  <div class="form-group">
+    <label>Post Content</label>
+
+    <input type="text" name="content" class="form-control" placeholder="Content" value="{{ post.content}}">
+    {{ elIf('<span>$self</span>', getErrorFor('content'), hasErrorFor('content')) }}
+
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">Publish</button>
+
+</form>
+@endsection
